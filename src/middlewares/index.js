@@ -436,7 +436,8 @@ const seolyzeMiddleware = (prefix) => {
         },
         onProxyRes: responseInterceptor(
             async (responseBuffer, proxyRes, req, res) => {
-                let domain = `${req.protocol}://${req.headers["host"]}`;
+                // let domain = `${req.protocol}://${req.headers["host"]}`;
+                let domain = `https://${req.headers["host"]}`;
                 if (req.url.match(/\.(css|json|js|text|png|jpg|map|ico|svg)/)) {
                     return responseBuffer;
                 }
