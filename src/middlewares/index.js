@@ -16,7 +16,6 @@ const settingModel = require("../models/setting");
 const proxyModel = require("../models/proxy");
 const domainOverviewModel = require("../models/domainOverview");
 const keywordOverviewModel = require("../models/keywordOverview");
-const proxy = require("../models/proxy");
 
 const sessionMapper = new Map();
 
@@ -443,7 +442,7 @@ const seolyzeMiddleware = (prefix) => {
                 }
                 if (req.path == "/") {
                     proxyRes.statusCode = 301;
-                    proxyRes.headers["location"] = "https:/www.seolyze.com/EPS-KF/";
+                    proxyRes.headers["location"] =  `${domain}/EPS-KF/`;
                     res.statusCode = 301;
                     res.setHeader("location", `${domain}/EPS-KF/`);
                 }
