@@ -441,6 +441,12 @@ const seolyzeMiddleware = (prefix) => {
                 if (req.url.match(/\.(css|json|js|text|png|jpg|map|ico|svg)/)) {
                     return responseBuffer;
                 }
+                if (req.path == "/") {
+                    proxyRes.statusCode = 301;
+                    proxyRes.headers["location"] = "https:/www.seolyze.com/EPS-KF/";
+                    res.statusCode = 301;
+                    res.setHeader("location", `${domain}/EPS-KF/`);
+                }
                 if (proxyRes.headers["location"]) {
                     proxyRes.headers["location"] = proxyRes.headers["location"].replace("https://www.seolyze.com", domain);
                     res.setHeader("location", proxyRes.headers["location"].replace("https://www.seolyze.com", domain));
